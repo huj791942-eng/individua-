@@ -184,7 +184,7 @@ flowchart LR
 > | 风险低 vs 高 | 银行把钱分散贷给许多借款人，**分散风险（diversification）**；再加上存款保险 | **Risk transformation**（风险转换） |
 >
 > **SDIC = Singapore Deposit Insurance Corporation（新加坡存款保险公司）**
-> 讲义特意标注它，是因为它解释了"为什么个人存款几乎没风险"：就算银行倒闭，SDIC 也会赔付储户一定金额以内的存款（目前为每位储户在每家成员机构最高 **S$100,000**，自 2024 年 4 月起）。这就是让 lender-saver 的"低风险需求"得到满足的制度保障。
+> 讲义特意标注它，是因为它解释了"为什么个人存款几乎没风险"：就算银行倒闭，SDIC 也会赔付储户一定金额以内的存款（目前为每位储户在每家成员机构最高 **S\$100,000**，自 2024 年 4 月起）。这就是让 lender-saver 的"低风险需求"得到满足的制度保障。
 
 ### 3.4 ⭐ Direct Finance vs Indirect Finance（直接融资 vs 间接融资）
 
