@@ -212,29 +212,7 @@ flowchart LR
 
 #### 完整的资金流动图（讲义 Slide 19，必须会画/会解释）
 
-```mermaid
-flowchart LR
-    LS["Lender-Savers<br/>Households / Firms /<br/>Government / Foreigners"]
-    BS["Borrower-Spenders<br/>Firms / Government /<br/>Households / Foreigners"]
-    FI((Financial<br/>Intermediaries))
-    FM((Financial<br/>Markets))
-
-    LS -- "FUNDS<br/>(cash / deposits)" --> FI
-    FI -- "FUNDS<br/>(cash / loans)" --> BS
-    FI -- FUNDS --> FM
-
-    LS -- FUNDS --> FM
-    FM -- FUNDS --> BS
-    BS -. SECURITIES .-> FM
-    FM -. SECURITIES .-> LS
-
-    subgraph IND["INDIRECT FINANCE 间接融资"]
-    FI
-    end
-    subgraph DIR["DIRECT FINANCE 直接融资"]
-    FM
-    end
-```
+![Slide 19：直接融资与间接融资的资金流动](img/slide19_direct_indirect_finance.png)
 
 图中右上角的文字框说明了金融体系的两大贡献：
 1. **Allows transfers of funds** from person or business without investment opportunities to one who has them（实现资金转移）
@@ -404,7 +382,7 @@ flowchart LR
 ### 5.3 ⭐ Classification of Financial Intermediaries（金融中介的三大类）
 
 ```mermaid
-flowchart TD
+flowchart LR
     FI[Financial Intermediaries 金融中介]
     FI --> DI["① Depository Institutions (DIs)<br/>存款类机构<br/>accept deposits and make loans"]
     FI --> CSI["② Contractual Savings Institutions (CSIs)<br/>契约型储蓄机构<br/>定期按合约收钱，支付可预测"]
@@ -573,35 +551,65 @@ flowchart TD
 
 ### Part A：选择题
 
-1. 以下哪一项 **不是** 讲义中提到的金融决策三大偏好？
-   A. More money is preferred to less B. Earlier receipt is preferred to later C. Higher risk is preferred to lower risk D. Less risky is preferred to more
+1. 以下哪一项 **不是** 讲义中提到的金融决策三大偏好？\
+   A. More money is preferred to less\
+   B. Earlier receipt is preferred to later\
+   C. Higher risk is preferred to lower risk\
+   D. Less risky is preferred to more
 
-2. 小明把钱存进 OCBC，OCBC 再把钱贷给一家中小企业。这属于：
-   A. Direct finance B. Indirect finance C. Primary market transaction D. OTC transaction
+2. 小明把钱存进 OCBC，OCBC 再把钱贷给一家中小企业。这属于：\
+   A. Direct finance\
+   B. Indirect finance\
+   C. Primary market transaction\
+   D. OTC transaction
 
-3. 某公司首次在 SGX 上市发行新股，投资者购买这些新股的市场是：
-   A. Secondary market B. Money market C. Primary market D. Dealer market
+3. 某公司首次在 SGX 上市发行新股，投资者购买这些新股的市场是：\
+   A. Secondary market\
+   B. Money market\
+   C. Primary market\
+   D. Dealer market
 
-4. 期限为 6 个月的国库券（T-bill）在哪个市场交易？
-   A. Capital market B. Money market C. Equity market D. Primary market only
+4. 期限为 6 个月的国库券（T-bill）在哪个市场交易？\
+   A. Capital market\
+   B. Money market\
+   C. Equity market\
+   D. Primary market only
 
-5. 以下关于 broker 的说法 **正确** 的是：
-   A. 持有证券库存 B. 通过 bid-ask spread 赚钱 C. 提供流动性 D. 撮合买卖双方，不参与交易本身
+5. 以下关于 broker 的说法 **正确** 的是：\
+   A. 持有证券库存\
+   B. 通过 bid-ask spread 赚钱\
+   C. 提供流动性\
+   D. 撮合买卖双方，不参与交易本身
 
-6. 外汇（FX）市场最典型的特征是：
-   A. 集中在一个交易所交易 B. OTC 市场、dealer 市场 C. Brokered 市场 D. 只有一级市场
+6. 外汇（FX）市场最典型的特征是：\
+   A. 集中在一个交易所交易\
+   B. OTC 市场、dealer 市场\
+   C. Brokered 市场\
+   D. 只有一级市场
 
-7. 养老基金的主要资金来源（primary liabilities）是：
-   A. Deposits B. Premiums from policies C. Employer and employee contributions D. Commercial paper
+7. 养老基金的主要资金来源（primary liabilities）是：\
+   A. Deposits\
+   B. Premiums from policies\
+   C. Employer and employee contributions\
+   D. Commercial paper
 
-8. 以下哪一个属于 Contractual Savings Institutions？
-   A. Credit union B. Mutual fund C. Life insurance company D. Finance company
+8. 以下哪一个属于 Contractual Savings Institutions？\
+   A. Credit union\
+   B. Mutual fund\
+   C. Life insurance company\
+   D. Finance company
 
-9. 关于 lender-savers 的典型特征，以下哪项 **错误**？
-   A. 金额小 B. 偏好短期 C. 偏好低流动性 D. 偏好低风险
+9. 关于 lender-savers 的典型特征，以下哪项 **错误**？\
+   A. 金额小\
+   B. 偏好短期\
+   C. 偏好低流动性\
+   D. 偏好低风险
 
-10. 二级市场的两大功能是：
-   A. 为公司筹集新资金 & 提供流动性 B. 提供流动性 & 确定价格 C. 确定价格 & 发放贷款 D. 吸收存款 & 发放贷款
+10. 二级市场的两大功能是：\
+   A. 为公司筹集新资金 & 提供流动性\
+   B. 提供流动性 & 确定价格\
+   C. 确定价格 & 发放贷款\
+   D. 吸收存款 & 发放贷款
 
 ### Part B：简答题
 
