@@ -1,6 +1,6 @@
 # Operations Management · Topic 4 流程设计（Process Design）学习笔记
 
-> 教材：Slack, Brandon-Jones & Burgess, *Operations Management*, 10th Edition — **Part Two "Designing the operation", Chapter 6 Process design**
+> 教材：Slack, Brandon-Jones & Burgess, *Operations Management*, 10th Edition — **Part Two "Designing the operation", Chapter 6 Process design**\
 > 内容范围：讲义 Topic 4（共 50 页）
 >
 > 📌 阅读说明
@@ -52,7 +52,7 @@ mindmap
 
 **一句话总结本章：** 流程设计就是把"设计"变成真正能交付产品/服务的实际流程。先根据 **产量–品种（volume–variety）** 选对 **流程类型**（制造业 5 种、服务业 3 种），再用 **流程图（process mapping）** 把流程画出来，最后用 **cycle time、stages、bottleneck、Little's law** 等指标来 **分析和平衡** 流程。
 
-> 💡 **在全书中的位置：** 从这一章开始进入 4Ds 中的 **Design（设计）** 部分（Part Two）。Design 包括四个主题：**Process design（本章）**、The layout and look of facilities（布局）、Process technology（流程技术）、People in operations（运营中的人）。
+> 💡 **在全书中的位置：** 从这一章开始进入 4Ds 中的 **Design（设计）** 部分（Part Two）。Design 包括四个主题：**Process design（本章）**、The layout and look of facilities（布局）、Process technology（流程技术）、People in operations（运营中的人）。\
 > 💡 **和前面章节的联系：**
 > - Topic 1 的 **4Vs（尤其是 volume、variety、visibility）** 在本章直接决定流程类型和流程图；
 > - Topic 2 的 **绩效目标（Q、S、D、F、C）** 在本章变成"流程设计的目标"；
@@ -318,13 +318,34 @@ mindmap
 | **Work in progress (WIP)** | The **number of items within the process at any point in time**（任一时刻流程中的物品数量） |
 | **Utilization** | The **proportion of available time that the resources within the process are performing useful work**（资源在可用时间中做有用工作的比例） |
 
-⚠️ **最容易混淆的三个时间：**
+### 🧋 本节贯穿全部计算的例子："茶语"奶茶店
 
-| | 含义 | 🌰 奶茶店例子 |
+光看公式很难懂，所以下面每个指标都 **用同一家奶茶店算一遍**。先记住这家店的情况：
+
+**① 做一杯珍珠奶茶要 5 个步骤：**
+
+| 步骤 | 内容 | 时间 |
 |---|---|---|
-| **Cycle time 周期时间** | **每隔多久出来一杯** | 每 2 分钟有一杯做好 |
-| **Work content 工作内容** | **做一杯一共需要多少工作时间**（所有步骤相加） | 点单 1 + 煮茶 2 + 加料 1 + 封口 1 = 5 分钟 |
-| **Throughput time 流程时间** | **一杯（或一位顾客）从进去到出来总共花多久**（包括等待） | 你排队 + 被做好一共等了 20 分钟 |
+| A | 点单收银 | 1.0 分钟 |
+| B | 泡茶倒茶 | 1.0 分钟 |
+| C | 加珍珠和配料 | 1.5 分钟 |
+| D | 加冰摇匀 | 0.5 分钟 |
+| E | 封口装袋、交给顾客 | 1.0 分钟 |
+| | **合计** | **5.0 分钟** |
+
+**② 需求：** 午餐高峰 12:00–14:00（**2 小时 = 120 分钟**），预计要卖 **60 杯**。
+
+⚠️ **最容易混淆的三个时间**（先有个直观印象，后面逐个算）：
+
+| | 含义 | 🧋 在奶茶店里 |
+|---|---|---|
+| **Work content 工作内容** | **做一杯一共需要多少工作时间**（所有步骤相加） | 1 + 1 + 1.5 + 0.5 + 1 = **5 分钟** |
+| **Cycle time 周期时间** | **每隔多久出来一杯** | 三个人分工后，**每 2 分钟** 出一杯 |
+| **Throughput time 流程时间** | **一位顾客从进店排队到拿到奶茶，总共花多久**（包括等待） | 前面排了很多人时，可能要 **30 分钟** |
+
+![奶茶店时间轴](img/topic4_gantt.png)
+
+📝 **看图理解：** 图 (B) 里，每杯奶茶本身都要 5 分钟（蓝色线），但三个工位 **同时在做不同的杯**，所以 **每 2 分钟** 就有一杯出来（绿色线）。**Work content 看"一杯"，cycle time 看"间隔"。**
 
 ### 4.2 ⭐ Cycle time 周期时间（Slide 34）
 
@@ -336,6 +357,20 @@ mindmap
 
 > 💡 **Takt time（节拍时间）**：来自德语 "Takt"（节拍）。它是 **为了满足需求，每多少时间必须产出一件**，就像音乐的节拍一样。
 
+**🧮 举个例子：奶茶店的 cycle time**
+
+> **问题：** 午餐 2 小时要卖 60 杯，平均每隔多久必须做好一杯？
+>
+> **Step 1 统一单位：** 2 小时 = 120 分钟\
+> **Step 2 代入公式：** Cycle time = 120 分钟 ÷ 60 杯 = **2 分钟/杯**\
+> **意思：** 想满足需求，店里 **每 2 分钟就要出一杯**。出得比这慢，就会有顾客买不到、队越排越长。
+
+**反过来用（已知 cycle time 求产量）：** 产量 = 可用时间 ÷ cycle time
+- 如果只有 1 个店员从头做到尾，每杯 5 分钟 → cycle time = 5 分钟 → 2 小时只能做 120 ÷ 5 = **24 杯**（远少于 60 杯，见上面的图 A）。
+- 所以 **"Is cycle time different from total processing time?"** 答案就在这里：一个人做时两者相等（都是 5 分钟）；分工以后，cycle time（2 分钟）可以比 total processing time（5 分钟）**短很多**。
+
+**🔁 再练一个：** 一家洗车店每天营业 10 小时，要洗 150 辆车。Cycle time = 600 分钟 ÷ 150 = **4 分钟/辆**。
+
 ### 4.3 ⭐ Number of stages 阶段数（Slide 35）
 
 - **Benefits obtained from dividing tasks and division of labour**（把任务分开、分工带来的好处）
@@ -346,6 +381,27 @@ mindmap
 - **When does the work content equal the cycle time?** → 当 **只有一个阶段（一个人做完全部工作）** 时，work content = cycle time。
 - ⚠️ 算出来如果是小数，要 **向上取整**（3.5 → 4），因为阶段数（人数、工位数）必须是整数，而且向下取整会导致产能不够。
 
+**🧮 举个例子：奶茶店需要几个工位？**
+
+> **已知：** Work content = 5 分钟（一杯的全部工作）；Cycle time = 2 分钟（每 2 分钟要出一杯）\
+> **代入：** Stages = 5 ÷ 2 = **2.5 → 向上取整 = 3 个工位**（3 个店员）
+>
+> **为什么不能取 2？** 如果只用 2 个人，每人平均要做 5 ÷ 2 = 2.5 分钟 → 每 2.5 分钟才出一杯 → 2 小时只有 120 ÷ 2.5 = 48 杯，**不够 60 杯**。\
+> **直观理解：** 一杯要 5 分钟的工作，但每 2 分钟就要交出一杯 → 一个人跟不上，至少要 3 个人一起分担。
+
+**怎样把 5 个步骤分到 3 个工位？（考试常考的方法）**
+1. **按顺序** 从第一个步骤开始往工位里放；
+2. 每放一个就加一下时间，**只要不超过 cycle time（2 分钟）就继续放**；
+3. 再放就会超过 2 分钟时，**开一个新工位**。
+
+| 工位 | 放进去的步骤 | 累计时间 | 说明 |
+|---|---|---|---|
+| 工位 1 | A（1）+ B（1） | **2.0 分钟** | 再加 C（1.5）会变成 3.5 > 2，停 |
+| 工位 2 | C（1.5）+ D（0.5） | **2.0 分钟** | 再加 E（1）会变成 3 > 2，停 |
+| 工位 3 | E（1） | **1.0 分钟** | 没有步骤了 |
+
+✅ 每个工位都 ≤ 2 分钟，所以整条线能做到 **每 2 分钟出一杯**。
+
 ### 4.4 ⭐ Process balancing 流程平衡与 idle time（Slide 40）
 
 **平衡（balancing）**：把工作尽量平均地分配到各个阶段，让每个阶段的工作量都接近 cycle time。
@@ -354,13 +410,30 @@ mindmap
 
 > **Idle cycle time rate = Σ (Cycle time − Stage time) ÷ (Cycle time × No. of stages)**
 
-> 💡 **补充：Balancing efficiency（平衡效率）= 1 − idle rate**，也可以写成：
-> **Balancing efficiency = Work content ÷ (Cycle time × No. of stages)**
+> 💡 **补充：Balancing efficiency（平衡效率）= 1 − idle rate**，也可以写成：\
+> **Balancing efficiency = Work content ÷ (Cycle time × No. of stages)**\
 > 平衡效率越高，说明人和设备的闲置越少。
+
+**🧮 举个例子：奶茶店的闲置时间**
+
+> 三个工位的工作量：**2 分钟、2 分钟、1 分钟**；cycle time = 2 分钟。
+>
+> **Step 1 每个工位闲多久？**（每 2 分钟一轮里，没事做的时间）\
+> 工位 1：2 − 2 = 0；工位 2：2 − 2 = 0；工位 3：2 − 1 = **1 分钟**
+>
+> **Step 2 Idle cycle time（加起来）** = 0 + 0 + 1 = **1 分钟**
+>
+> **Step 3 Idle rate** = 1 ÷ (2 × 3) = 1 ÷ 6 = **16.7%**\
+> 分母 "2 × 3" 的意思是：每一轮 3 个人各有 2 分钟，一共 **6 个"人·分钟"** 可以用；其中 1 个被浪费了。
+>
+> **Step 4 Balancing efficiency** = 1 − 16.7% = **83.3%**（也可以算 5 ÷ 6 = 83.3%：6 个人·分钟里，真正在做奶茶的是 5 个）
+
+**顺便算 utilization（利用率）：** 工位 3 每 2 分钟只忙 1 分钟 → 利用率 = 1 ÷ 2 = **50%**；工位 1、2 的利用率都是 100%。
+💡 **怎么改进？** 可以让工位 3 的店员在空闲时顺便 **补珍珠、擦台面**，或者让他兼做一部分点单工作。
 
 ### 4.5 ⭐ Bottleneck 瓶颈（Slide 41–42）
 
-> **The bottleneck is that part of the process that is the most overloaded, relative to its capacity.**
+> **The bottleneck is that part of the process that is the most overloaded, relative to its capacity.**\
 > **瓶颈 = 相对于自身产能，负荷最重的那个环节。**
 
 ![流程平衡与瓶颈](img/topic4_balance.png)
@@ -370,6 +443,23 @@ mindmap
 - **(b) 分配不均**：最慢的 Stage 4 要 3.0 分钟 → **整个流程的 cycle time 变成 3.0 分钟**，其他阶段都会出现闲置（黄色部分）
 
 📝 **核心规律：流程的速度由最慢的环节（瓶颈）决定。** 就像一个木桶能装多少水，取决于最短的那块木板。
+
+**🧮 举个例子：奶茶店来了个新人**
+
+![奶茶店的瓶颈](img/topic4_teabn.png)
+
+> **情况 (1) 原来：** 三个工位 2 / 2 / 1 分钟 → 最慢的是 2 分钟 → CT = 2 → 2 小时 120 ÷ 2 = **60 杯**
+>
+> **情况 (2) 工位 2 换了新人**，加珍珠（C）手慢，从 1.5 分钟变成 2.5 分钟 → 工位 2 = 2.5 + 0.5 = **3 分钟**
+> - 工位 1 每 2 分钟就做好一杯半成品，但工位 2 要 3 分钟才能接下一杯 → 杯子在工位 2 前面 **越堆越多**；
+> - 工位 3 每 3 分钟才收到一杯 → 只能干等；
+> - **整条线每 3 分钟才出一杯 → 2 小时只有 120 ÷ 3 = 40 杯**，少卖了 20 杯！
+> - **工位 2 就是瓶颈。**
+>
+> **情况 (3) 改进：** 把"加冰摇匀"（D，0.5 分钟）从工位 2 挪到工位 3 → 2 / **2.5** / 1.5 → CT = 2.5 → **48 杯**（好了一些）\
+> 想回到 60 杯？要直接解决瓶颈：**培训新人** 或 **在工位 2 加一个帮手**。
+
+⚠️ **最常见的错误：** 在 **非瓶颈** 的地方加人（例如给工位 1 加一个人）**一杯都不会多卖**，因为工位 2 还是每 3 分钟才放行一杯。**改进要先找瓶颈。**
 
 **🌰 讲义例子：自动扶梯（escalator）**
 
@@ -402,6 +492,22 @@ mindmap
 >
 > 💡 **另一种常见写法：** 很多教科书把 Little's law 写成 **WIP = Throughput rate × Throughput time**。因为 throughput rate（产出率）= 1 ÷ cycle time，两种写法是 **完全等价** 的。
 
+**🧮 举个例子：你在奶茶店要等多久？**
+
+> **情况：** 12:30 你走进奶茶店，数了一下：前面排队的 + 正在做的，一共 **15 人**（WIP = 15）。店里每 **2 分钟** 出一杯（CT = 2）。
+>
+> **代入：** Throughput time = WIP × CT = 15 × 2 = **30 分钟**\
+> **意思：** 你大约要 **30 分钟** 才能拿到奶茶。\
+> **为什么是相乘？** 你前面的 15 个人，每人"占用"2 分钟的出杯时间，15 个 2 分钟就是 30 分钟。
+
+**知二求一的另外两种用法：**
+
+> **① 求 WIP：** 店长希望顾客最多等 **10 分钟**。队伍最多能有几人？\
+> WIP = TT ÷ CT = 10 ÷ 2 = **5 人**。超过 5 人时，就该加开一个工位或者引导顾客用 App 预约。
+>
+> **② 求 CT：** 你观察到店里平均有 **12 人**，顾客平均要等 **36 分钟**。这家店多久出一杯？\
+> CT = TT ÷ WIP = 36 ÷ 12 = **3 分钟/杯**。
+
 **讲义问题：WIP = 10 位顾客，cycle time = 2 分钟（Slide 44）**
 - **Throughput time = 10 × 2 = 20 分钟**
 - **How long does the first customer in the queue need to wait?** 💡 排在最前面的顾客 **几乎马上就能完成**，大约 **2 分钟**（一个 cycle time）。
@@ -415,10 +521,18 @@ mindmap
 
 ### 4.7 ⭐ Throughput efficiency 流程效率（Slide 46）
 
-> **Throughput efficiency is the work content (of whatever is being processed) as a percentage of its throughput time.**
+> **Throughput efficiency is the work content (of whatever is being processed) as a percentage of its throughput time.**\
 > 在 throughput time 中，**真正在做有用（增值）工作** 的时间占多少比例。
 
 > **Throughput efficiency = Work content (WC) ÷ Throughput time × 100%**
+
+**🧮 举个例子：你那杯奶茶的流程效率**
+
+> 接着上面：你从排队到拿到奶茶共 **30 分钟**（throughput time），但真正有人在为你做奶茶的时间只有 **5 分钟**（work content）。
+>
+> **代入：** Throughput efficiency = 5 ÷ 30 × 100% = **16.7%**\
+> **意思：** 你在店里的时间，只有 16.7% 是"有用的"，**83.3% 都在排队等**。\
+> **怎么提高？** 让员工手更快作用有限（5 分钟最多压到 4 分钟）；**真正有效的是减少排队**，例如 App 预点单、高峰期加开工位。效率就能从 16.7% 大幅提高。
 
 **🌰 讲义例子：Blood Transfusion Service（爱尔兰输血服务中心 IBTS，价值流图，Slide 47）**
 - 献血者的流程：**Registration（登记）→ Interview（面谈）→ Hb（血红蛋白检测）→ Venepuncture（采血）→ Beds（卧床休息）→ Canteen（餐厅休息）**
@@ -450,6 +564,20 @@ mindmap
 | **Lower capital requirement (no duplication)**（资本需求低，设备不用重复购买） | **Greater robustness**（更稳健：一个人/一条线出问题，其他的照常运作） |
 | **Greater efficiency**（效率更高：专业化分工） | **Less monotonous**（工作没那么单调） |
 | **Higher space utilization**（空间利用率高） | **Higher ownership**（员工对产品有更强的责任感和成就感） |
+
+**🧮 举个例子：奶茶店的三个店员，排成"长而细"还是"短而粗"？**
+
+| | **Long-thin（现在的做法）** | **Short-fat（另一种做法）** |
+|---|---|---|
+| 安排 | 3 个工位排成一条线，每人只做一部分（2 / 2 / 1 分钟） | 3 个店员 **各自** 从点单到封口做完整的一杯（每人 5 分钟） |
+| 每人出杯速度 | — | 每人 1 杯 / 5 分钟 |
+| 整店 cycle time | 由瓶颈决定 = **2 分钟** | 3 人合起来：每 5 分钟出 3 杯 → 5 ÷ 3 ≈ **1.67 分钟** |
+| 2 小时产量 | 120 ÷ 2 = **60 杯** | 120 ÷ 1.67 ≈ **72 杯** |
+| 设备 | **1 套** 收银机、泡茶机、封口机 | 要 **3 套**（每人一套）→ 成本高、占地方 |
+| 有人请假 | 整条线要重新分工，否则停摆 | 剩下 2 人照做：2 小时 48 杯（**更稳健**） |
+| 员工感受 | 一直重复同一个动作，单调 | 每人做完整一杯，**不单调、有成就感** |
+
+📝 **结论：** 这里 short-fat 产量更高，是因为它没有"工位 3 闲着"的平衡损失，代价是 **设备要买 3 套**。现实中选哪种，要看 **设备贵不贵、需求稳不稳定、品种多不多**。
 
 > 💡 **记忆：** Long-thin = **流水线思维**（效率高、成本低，但僵化）；Short-fat = **"一人一摊"思维**（灵活、稳健、员工满意，但设备要重复购买）。这和 2.7 节岗位设计的 **narrow vs broad division of labour** 是同一个道理。
 
@@ -488,6 +616,16 @@ mindmap
 
 **Step 3：分配工序到 4 个阶段**（每阶段 ≤ 6 分钟，并遵守先后顺序）
 
+> **怎么分？**（和奶茶店的方法一样，只是多了"先后顺序"的限制）
+> - 一个工序 **只有在它的紧前工序都放好之后** 才能放（例如 h 要等 e、f、g 都放好）；
+> - 在可以放的工序里挑一个放进当前阶段，**只要累计不超过 6 分钟就继续放**；
+> - 放不下了就开下一个阶段。
+>
+> 实际过程：a(2) → +b = 4 → +c = 5（再加 d 会变成 7 > 6，停）→ **Stage 1 = 5**；\
+> d(2) → +f = 3.5 → +g = 5（再加 e 会变成 8 > 6，停）→ **Stage 2 = 5**；\
+> e(3) → +h = 6（刚好 6，停）→ **Stage 3 = 6**；\
+> i(3) → +j = 5 → **Stage 4 = 5**。
+
 | 阶段 | 工序 | 时间 |
 |---|---|---|
 | Stage 1 | a + b + c | 2 + 2 + 1 = **5 min** |
@@ -512,7 +650,8 @@ mindmap
 **题目：** 一个车辆牌照中心每个 **8 小时工作日** 平均处理 **5,000 份** 申请。有 **15,000 份** 申请正在处理或等待处理。处理一份申请所需的全部活动加起来是 **25 分钟**。求 throughput time 和 throughput efficiency。
 
 **Step 1：Cycle time**
-> CT = 8 h ÷ 5,000 = 480 min ÷ 5,000 = **0.096 min**
+> CT = 8 h ÷ 5,000 = 480 min ÷ 5,000 = **0.096 min**\
+> 💡 0.096 分钟 ≈ **5.8 秒**：整个中心（很多员工一起）平均每 5.8 秒就处理完一份申请。
 
 **Step 2：Throughput time（Little's law）**
 > TH = 15,000 × 0.096 = **1,440 min** = 24 小时 = **3 个 8 小时工作日**
@@ -541,18 +680,18 @@ mindmap
 
 > 💡 **参考答案**（讲义没有给出答案，以下按本章公式推算，假设每道工序各由一个工位负责，若老师课上有不同假设请以课堂为准）：
 >
-> **Q1. What is the cycle time of this process?**
-> Cycle time 由 **最慢的工序（瓶颈）** 决定：最长的是 **Customer service（点单与付款）45 秒**。
+> **Q1. What is the cycle time of this process?**\
+> Cycle time 由 **最慢的工序（瓶颈）** 决定：最长的是 **Customer service（点单与付款）45 秒**。\
 > → **Cycle time = 45 秒**（每 45 秒完成一单）
 >
-> **Q2. How many finished orders can we process during lunch time (2 hrs of pick time)?**
+> **Q2. How many finished orders can we process during lunch time (2 hrs of pick time)?**\
 > 2 × 3,600 s ÷ 45 s = 7,200 ÷ 45 = **160 orders**
 >
-> **Q3. What is the throughput time?**
-> 一份订单走完全部工序的时间（不考虑排队）= 11 + 20 + 14 + 0 + 45 = **90 秒（1 分 30 秒）**，与表中最后的 elapsed time 1:30 一致。
+> **Q3. What is the throughput time?**\
+> 一份订单走完全部工序的时间（不考虑排队）= 11 + 20 + 14 + 0 + 45 = **90 秒（1 分 30 秒）**，与表中最后的 elapsed time 1:30 一致。\
 > （如果有顾客在排队，就要用 Little's law：TH = WIP × 45 秒。）
 >
-> **Q4. To increase the number of processed orders by 100%, what would you do?**
+> **Q4. To increase the number of processed orders by 100%, what would you do?**\
 > 产量翻倍 → cycle time 要从 45 秒降到 **22.5 秒**。
 > - **处理瓶颈**：再开 **一个收银台/点餐机（customer service 变成 2 个并行工位）**，每 45 秒能完成 2 单，相当于 22.5 秒一单；
 > - **检查下一个瓶颈**：接下来最慢的是 **Assembly 20 秒**，仍然 < 22.5 秒，所以不会拖慢流程 → **产量刚好翻倍到 320 单**；
