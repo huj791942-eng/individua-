@@ -6,7 +6,7 @@
 > 📌 阅读说明
 > - **英文术语保留原文**（考试用英文作答），中文帮助理解。
 > - **💡 补充** = 讲义没讲但能帮助理解的内容；**⚠️ 易错** = 容易混淆的地方；**🧮 举个例子** = 用具体数字或场景演示。
-> - 本章有一道 **计算题**：重心法选址（gravity location model），第 3.6 节一步步算。
+> - 本章有一道 **计算题**：重心法选址（gravity location model），第 3 节一步步算，包括老师课上讲的欧洲选址题（3.4 节）。
 > - 文末有 **易混淆汇总、术语表、自测题（含答案）、考前速记**。
 
 ---
@@ -359,6 +359,98 @@ mindmap
 > ⚠️ 注意：**运入和运出的量都要算进去**（公式里 Vi 是 "sent from/to a location"）。
 
 > 💡 **重心法的局限：** 它只考虑了 **直线距离和运量**，没有考虑 **实际道路、地价、劳动力、政策** 等因素。算出来的点只是一个 **起点**，还要结合现实情况调整（比如那个位置刚好是一个湖）。
+
+
+### 3.4 ⭐ 课堂练习：欧洲配送中心选址（老师在课上讲的题，Chavez 改编案例）
+
+**题目（根据课堂照片整理）：** 一家公司在欧洲有 4 个销售中心，要找一个新配送中心的位置。公司认为 **Germany 或 Austria** 可能是好的选择，并且还要考虑其他主要标准来做最终决定。
+
+**Table 1 每周需求（单位：车 truck loads）**
+
+| 销售中心 | 每周销量 |
+|---|---|
+| France 法国 | 5 |
+| Germany 德国 | 10 |
+| Italy 意大利 | 12 |
+| Poland 波兰 | 8 |
+
+⚠️ 照片里表格的数字看起来往上错了一行（5 对着空行），**以老师的解答为准**：法国 5、德国 10、意大利 12、波兰 8。
+
+**地图坐标**（从解答里的公式读出来，地图上 1 格 ≈ 300 km）：
+
+| 销售中心 | X | Y | 运量 V |
+|---|---|---|---|
+| France 法国 | 1 | 2 | 5 |
+| Italy 意大利 | 5 | 1 | 12 |
+| Germany 德国 | 5 | 3 | 10 |
+| Poland 波兰 | 9 | 4 | 8 |
+
+**问题：**
+- **(a)** Using the centre-of-gravity method, find a location on the map that reduces cost of transportation (distance travelled) and maintains service levels.
+- **(b)** Once the location has been chosen, consider the important factors in Table 2 before making your final decision.
+
+#### (a) 计算过程（一步步来）
+
+![欧洲配送中心选址](img/topic7_europe.png)
+
+| 销售中心 | X | Y | V | X × V | Y × V |
+|---|---|---|---|---|---|
+| France | 1 | 2 | 5 | 5 | 10 |
+| Italy | 5 | 1 | 12 | 60 | 12 |
+| Germany | 5 | 3 | 10 | 50 | 30 |
+| Poland | 9 | 4 | 8 | 72 | 32 |
+| **合计** | | | **35** | **187** | **84** |
+
+**Step 1：总运量** ΣV = 5 + 12 + 10 + 8 = **35**
+
+**Step 2：X 坐标** X = ΣXV ÷ ΣV = (1×5 + 5×12 + 5×10 + 9×8) ÷ 35 = (5 + 60 + 50 + 72) ÷ 35 = 187 ÷ 35 ≈ **5.34** ✅（和讲义一致）
+
+**Step 3：Y 坐标** Y = ΣYV ÷ ΣV = (2×5 + 1×12 + 3×10 + 4×8) ÷ 35 = (10 + 12 + 30 + 32) ÷ 35 = 84 ÷ 35 = **2.40**
+
+> ⚠️ **注意：讲义解答写的是 Y = 2.04，这是算错（或打错）了。** 用讲义自己的公式，84 ÷ 35 = **2.40**，不是 2.04。你可以自己按计算器验证：35 × 2.04 = 71.4 ≠ 84，而 35 × 2.4 = 84 ✓。\
+> 老师在地图上画的蓝圈也在 **Y ≈ 2.4–2.6** 的位置（列支敦士登附近），和 2.40 吻合；如果是 2.04，点会落在更南边的米兰附近。考试时用 **2.40**；如果老师坚持 2.04，可以把计算过程写出来说明。
+
+**答案（a）：重心约在 (5.34, 2.40)。** 在地图上大约是 **瑞士东部 / 列支敦士登 / 奥地利西部** 一带。
+
+📝 **检查答案是否合理：**
+- X = 5.34：意大利和德国都在 X = 5，运量又最大（12 + 10 = 22），所以 X 被拉在 5 附近；波兰（X = 9）把它往右拉了一点 ✓
+- Y = 2.40：意大利（Y = 1）运量最大，把点往下拉；德国（Y = 3）和波兰（Y = 4）往上拉 → 落在 2 和 3 之间 ✓
+
+#### (b) 结合其他因素做最终决定
+
+**为什么题目说"Germany 或 Austria"？** 💡 重心落在 **瑞士 / 列支敦士登** 附近，但 **瑞士不是欧盟成员，使用瑞士法郎**（跨境要报关、有汇率风险），所以公司在 **紧挨着重心的两个欧盟国家**：德国（南部，如慕尼黑一带）和奥地利（西部，如因斯布鲁克 / 福拉尔贝格一带）之间选择。这正是第 3.3 节说的：重心法只给出 **起点**，最后还要看现实因素。
+
+**Table 2 其他决策因素**（照片拍得斜，笔挡住了一部分，按我的读法整理）：
+
+| Criteria 标准 | Germany 德国 | Austria 奥地利 |
+|---|---|---|
+| Land cost 土地成本 | Euro | Euro |
+| Local tax 地方税 | **High（高）** | **Competitive（有竞争力）** |
+| Input costs 投入成本 | Euro | Euro |
+| Qualified labor cost 熟练劳动力成本 | Competitive | Competitive |
+| Movement of capital 资本流动 | Competitive | Competitive |
+| Accessibility (roads) 公路交通 | Competitive | Competitive |
+| Accessibility (airport) 机场交通 | Competitive | Competitive |
+| Potential expansion 扩展潜力 | Competitive | Competitive |
+| Political stability 政治稳定 | UE | UE |
+| Government support 政府支持 | Competitive | Competitive |
+
+- **"Euro"**：两国都用欧元 → 没有汇率风险，成本用同一种货币计价，可以直接比较
+- **"UE"**：西班牙语 Unión Europea = **EU（欧盟）**，两国都是欧盟成员 → 政治稳定、货物自由流通
+- **"Competitive"**：在这一项上有竞争力（不吃亏）
+
+**分析：** 两个国家在 **几乎所有标准上都一样**（都用欧元、都是欧盟、交通/劳动力/扩展/政府支持都 competitive），**唯一的区别是 Germany 有一项是 "High"（照片里在地方税这一行），而 Austria 是 "Competitive"**。
+
+**答案（b）：选 Austria（奥地利，靠近重心的西部地区）。**
+
+> 📝 **答题模板（英文）：**\
+> "Using the centre-of-gravity method, the optimal location is approximately (5.34, 2.40), which falls in the Switzerland / Liechtenstein / western Austria area. Since Switzerland is outside the EU, the nearest feasible options are southern Germany and western Austria. Both countries share the euro, EU membership and competitive labour, accessibility, expansion potential and government support. The only difference is that Germany's local tax is high while Austria's is competitive. Therefore, **Austria** is recommended, as it minimises transportation distance and offers lower costs while maintaining service levels."
+>
+> ⚠️ 如果你在讲义原件上看到 "High" 实际是在 **Land cost（土地成本）** 那一行，结论不变：只要德国在某一项成本上偏高、其他都一样，就选 **奥地利**。
+
+> 💡 **这道题说明的两个道理：**
+> 1. **重心法 = 量化（只看距离和运量）**；**Table 2 = 定性因素（税、劳动力、政治、扩展……）**。真正的选址决策要 **两者结合**。
+> 2. 如果想更严谨地比较 Table 2，可以用 **加权评分法（weighted factor rating）**：给每个标准一个权重（比如税 20%、交通 25%……），每个国家打分，再算加权总分，总分高的胜出。在这道题里两国只差一项，所以不用算也能看出奥地利更好。
 
 ---
 
@@ -924,7 +1016,7 @@ mindmap
 8. **Kraljic**：Strategic（长期合作）、Leverage（议价）、Bottleneck（确保有货）、Non-critical（物有所值）；上半部分约占 80% 支出。
 9. **物流四决策**：所有权、产能、运输方式、选址；**服务 vs 成本** 的权衡。
 10. **三种网络**：直接（服务）、循环取送（服务 + 成本）、经 DC（速度 + 成本）；**DC 分发、CC 整合**。
-11. **重心法**：X = ΣXiVi ÷ ΣVi，Y = ΣYiVi ÷ ΣVi（加权平均，运入运出都算）。
+11. **重心法**：X = ΣXiVi ÷ ΣVi，Y = ΣYiVi ÷ ΣVi（加权平均，运入运出都算）；课堂欧洲题答案 **(5.34, 2.40)**（讲义的 2.04 算错了），最终选 **奥地利**（重心在瑞士附近、欧盟外；德国有一项成本偏高）。
 12. **牛鞭效应**：需求 **从下游到上游被放大**；四原因：预测更新、订单批量、价格波动、抢货博弈。
 13. **Dell 模式**：跳过仓库和分销商，上市时间缩短 80% 以上，看到真实订单。
 14. **Fisher**：功能型（稳定、利润薄）→ 精益；创新型（难测、利润高）→ 灵活；**不匹配就会失败**。
